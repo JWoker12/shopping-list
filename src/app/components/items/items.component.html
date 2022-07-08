@@ -1,3 +1,6 @@
 <div class="container my-3">
-    <app-item *ngFor="let item of items" [item]="item" (deleteItem)="deleteItem($event)"></app-item>
+    <app-total [total]="total"></app-total>
+    <app-item *ngFor="let item of items" [item]="item"
+        (deleteItem)="deleteItem($event)"
+        (toggleItem)="toggleItem($event)"></app-item>
 </div>

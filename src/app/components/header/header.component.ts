@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.sass']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  title: string;
+  constructor() {
+    this.title = "ShoppingList";
+  }
 
   ngOnInit(): void {
   }

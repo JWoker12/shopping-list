@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="card my-5">
+        <div class="card-body">
+            <form action="" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <label class="form-label">ID</label>
+                    <input type="number" class="form-control" name="id" [(ngModel)]="id">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Name Article</label>
+                    <input type="text" class="form-control" name="title" [(ngModel)]="title">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Price</label>
+                    <input type="number" class="form-control" name="price" [(ngModel)]="price">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" [(ngModel)]="quantity">
+                </div>
+                <div class="d-grid col-6 mx-auto">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

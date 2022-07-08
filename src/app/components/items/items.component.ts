@@ -1,42 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../../models/item';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
-  selector: 'app-items',
-  templateUrl: './items.component.html',
-  styleUrls: ['./items.component.sass']
+    selector: 'app-items',
+    templateUrl: './items.component.html',
+    styleUrls: ['./items.component.sass']
 })
 export class ItemsComponent implements OnInit {
 
-  items: Item[] = [];
+    items: Item[] = [];
+    total:number = 0;
 
-  constructor() { }
+    constructor(private itemService:ItemService) { }
 
-  ngOnInit(): void {
-    this.items = [
-      {
-        id: 1,
-        title: 'manzana',
-        price: 10.5,
-        quantity: 4,
-        completed: false,
-      },
-      {
-        id: 2,
-        title: 'pan',
-        price: 3.8,
-        quantity: 5,
-        completed: true,
-      }
-    ]
-  }
-  
-  deleteItem(item: Item){
-    this.items = this.items.filter(x => x.id != item.id);
-  }
+    ngOnInit(): void {
+        this.items = this.itemService.getItems(),
 
-  onToggle(item: Item){
-    item.completed = !item.completed;
-  }
+        this.getTotal();
+    }
+    
+    deleteItem(item: Item){
+        this.items = this.items.filter(x => x.id != item.id);
+        this.getTotal();
+    }
+
+    toggleItem(item: Item){
+        item.completed = !item.completed;
+        this.getTotal();
+    }
+
+    getTotal(){
+        this.total = this.items
+            .filter(item => ! !item.completed)
+            .map(item => item.quantity * item.price)
+            .reduce( (acc, item) => acc += item, 0);
+    }
 
 }
