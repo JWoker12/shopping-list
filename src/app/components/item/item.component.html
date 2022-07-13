@@ -1,21 +1,21 @@
-<div class="row align-items-center my-2" [ngClass]="item.completed ? 'text-muted text-decoration-line-through' : ''">
-    <div class="form-check form-switch col-1">
+<div class="row my-2" [ngClass]="item.completed ? 'text-muted text-decoration-line-through' : ''">
+    <div class="form-check form-switch col-1                                                                        ">
         <input class="form-check-input" type="checkbox" [checked]="item.completed"
             (change)="onToggle(item)">
     </div>
-    <div class="col">
+    <div class="col text-center">
         {{ item.title | titlecase }}
     </div>
-    <div class="col">
+    <div class="col text-center">
         {{ item.price | currency }}
     </div>
-    <div class="col">
+    <div class="col text-center">
         {{ item.quantity }}
     </div>
-    <div class="col">
+    <div class="col text-center">
         {{ (item.price * item.quantity) | currency }}
     </div>
-    <div class="col">
+    <div class="col text-end">
         <button class="btn btn-success" (click)="onDelete(item)" [disabled]="item.completed">Eliminar</button>
     </div>
 </div>
